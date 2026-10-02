@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class apuntes : MonoBehaviour
@@ -77,6 +78,36 @@ public class apuntes : MonoBehaviour
 
     private void FerranoMola() 
     {
-		Debug.Log("Hola Mundo");
+		// Debug.Log("Hola Mundo");
 	}
+		// se ejecuta el primer frame en el que entran en contacto dos colliders diferentes que no esten emparentados
+    private void OnCollisionEnter(Collision collision)
+    {
+	    
+    }
+		// se ejecuta el frame despues que dejen de tocarse
+    private void OnCollisionExit(Collision collision)
+    {
+	    throw new NotImplementedException();
+    }
+		// se ejecuta cada frame que este en contacto con otro collider SI HAY CAMBIOS
+    private void OnCollisionStay(Collision collision)
+    {
+	    
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+	    
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+	    
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+	    
+    }
 }
