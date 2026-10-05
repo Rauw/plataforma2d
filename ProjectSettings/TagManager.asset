@@ -8,6 +8,9 @@ TagManager:
   - tocho roto
   - tocho
   - coin
+  - death
+  - platform
+  - champi
   layers:
   - Default
   - TransparentFX

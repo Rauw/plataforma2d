@@ -12,19 +12,21 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject tochitosPrefab;
 
-    private int totalcoin;
-    private int totalLives = 3;
+   
 
     private Vector3 startPos;
 
      
     
     private Rigidbody rb;
+
+    private LevelManager lm;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        lm = GameObject.Find("LevelManager").GetComponent<LevelManager>();
         startPos = transform.position;
     }
 
@@ -93,23 +95,34 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "coin")
         {
-            totalcoin +=1;
+            GameManager.instance.gameData.totalCoins +=1;
+            lm.UpdateCoinsText();
             Destroy(other.gameObject);
-            Debug.Log(totalcoin);
+            
         }
 
         if (other.gameObject.tag == "death")
         {
             //quitamos 1 vida
-            totalLives-=1;
-            transform.position = startPos;
-            transform.localScale = new Vector3(1,1,1);
+            GameManager.instance.gameData.totalLives -= 1;
+            if (GameManager.instance.gameData.totalLives < 0)
+            {
+                lm.ActivePanelGameOver();
+            }
+            else
+            {
+                transform.position = startPos;
+                lm.UpdatelivesText();
+                transform.localScale = new Vector3(1,1,1);
+            }
+            
             
         }
 
         if (other.gameObject.tag == "champi")
         {
             transform.localScale = new Vector3(2,2,2);
+            
             Destroy(other.gameObject);
         }
     }
