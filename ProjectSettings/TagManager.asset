@@ -11,6 +11,9 @@ TagManager:
   - death
   - platform
   - champi
+  - limiteenemigo
+  - enemy
+  - win
   layers:
   - Default
   - TransparentFX
@@ -18,8 +21,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - detectionarea
+  - enemylimit
   - 
   - 
   - 

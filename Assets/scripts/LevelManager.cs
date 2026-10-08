@@ -1,15 +1,17 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private Text coinsText, livesText;
-    [SerializeField] private GameObject panelGameOver;
+    [SerializeField] private GameObject panelGameOver, panelWin;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Time.timeScale = 1;
         UpdateCoinsText();
         UpdatelivesText();
     }
@@ -41,9 +43,21 @@ public class LevelManager : MonoBehaviour
         GameManager.instance.gameData.totalCoins = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void NextlevelButton()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+       // SceneManager.LoadScene(NextLevelName);
+    }
     
     public void ActivePanelGameOver()
     {
         panelGameOver.SetActive(true);
+    }
+
+    public void finishlevel()
+    {
+        panelWin.SetActive(true);
+        Time.timeScale = 0;
     }
 }

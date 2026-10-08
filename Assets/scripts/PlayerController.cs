@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -80,7 +81,26 @@ public class PlayerController : MonoBehaviour
             transform.parent = collision.transform;
             isGrounded = true;
         }
-        
+
+        if (collision.gameObject.tag == "enemy")
+        {
+           if (collision.GetContact(0).normal.y > 0.5f)
+            {
+                //muere el enemy
+                Destroy(collision.gameObject);
+                rb.AddForce(Vector3.up * JumpForce * 0.5f);
+            }
+            else
+            {
+                //muere el player
+                muerteplayer();
+            }
+        }
+
+        if (collision.gameObject.tag == "win")
+        {
+            lm.finishlevel();
+        }
     }
 
     private void OnCollisionExit(Collision collision)
@@ -104,19 +124,8 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "death")
         {
             //quitamos 1 vida
-            GameManager.instance.gameData.totalLives -= 1;
-            if (GameManager.instance.gameData.totalLives < 0)
-            {
-                lm.ActivePanelGameOver();
-            }
-            else
-            {
-                transform.position = startPos;
-                lm.UpdatelivesText();
-                transform.localScale = new Vector3(1,1,1);
-            }
             
-            
+            muerteplayer();
         }
 
         if (other.gameObject.tag == "champi")
@@ -124,6 +133,21 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(2,2,2);
             
             Destroy(other.gameObject);
+        }
+    }
+
+    private void muerteplayer()
+    {
+        GameManager.instance.gameData.totalLives -= 1;
+        if (GameManager.instance.gameData.totalLives < 0)
+        {
+            lm.ActivePanelGameOver();
+        }
+        else
+        {
+            transform.position = startPos;
+            lm.UpdatelivesText();
+            transform.localScale = new Vector3(1,1,1);
         }
     }
 }
