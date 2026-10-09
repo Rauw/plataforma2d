@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
     
     public static GameManager instance;
     public GameData gameData;
+
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour
             gameData = new GameData();
             gameData.totalCoins = 0;
             gameData.totalLives = 3;
+            
+            
         }
         else
         {

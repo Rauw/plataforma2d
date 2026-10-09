@@ -22,6 +22,12 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
 
     private LevelManager lm;
+    [SerializeField]
+    private AudioClip jumpSound;
+    [SerializeField]
+    private AudioClip coincollect;
+    [SerializeField]
+    private AudioClip meta;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -51,9 +57,8 @@ public class PlayerController : MonoBehaviour
        {
            rb.AddForce(Vector3.up * JumpForce);
            isGrounded = false;
+           audiomanager.instance.PlaySfx(jumpSound);
        }
-
-
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -100,6 +105,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "win")
         {
             lm.finishlevel();
+            audiomanager.instance.PlaySfx(meta); 
         }
     }
 
@@ -115,9 +121,11 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "coin")
         {
-            GameManager.instance.gameData.totalCoins +=1;
+           audiomanager.instance.PlaySfx(coincollect); 
+           GameManager.instance.gameData.totalCoins +=1;
             lm.UpdateCoinsText();
             Destroy(other.gameObject);
+            
             
         }
 

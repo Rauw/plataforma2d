@@ -7,6 +7,7 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] private Text coinsText, livesText;
     [SerializeField] private GameObject panelGameOver, panelWin;
+    [SerializeField] private AudioClip musica;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -14,6 +15,7 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = 1;
         UpdateCoinsText();
         UpdatelivesText();
+        audiomanager.instance.PlayMusic(musica);
     }
 
     // Update is called once per frame
