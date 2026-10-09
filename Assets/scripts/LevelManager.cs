@@ -6,7 +6,7 @@ using UnityEngine.Video;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private Text coinsText, livesText;
-    [SerializeField] private GameObject panelGameOver, panelWin;
+    [SerializeField] private GameObject panelGameOver, panelWin, panelpause;
     [SerializeField] private AudioClip musica;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -38,6 +38,11 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+    public void continueButton()
+    {
+        panelpause.SetActive(false);
+        Time.timeScale = 1;
+    }
 
     public void RestartButton()
     {
@@ -60,6 +65,12 @@ public class LevelManager : MonoBehaviour
     public void finishlevel()
     {
         panelWin.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void ActivePanelpause()
+    {
+        panelpause.SetActive(true);
         Time.timeScale = 0;
     }
 }
