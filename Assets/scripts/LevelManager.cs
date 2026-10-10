@@ -37,7 +37,7 @@ public class LevelManager : MonoBehaviour
     public void MainMenuButton()
     {
         SceneManager.LoadScene(0);
-        Debug.Log("MainMenuButton");
+        
     }
     public void continueButton()
     {
