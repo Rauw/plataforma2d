@@ -126,11 +126,11 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "coin")
         {
-           audiomanager.instance.PlaySfx(coincollect); 
-           GameManager.instance.gameData.totalCoins +=1;
+           
+            GameManager.instance.gameData.totalCoins +=1;
             lm.UpdateCoinsText();
             Destroy(other.gameObject);
-            
+            audiomanager.instance.PlaySfx(coincollect); 
             
         }
 
