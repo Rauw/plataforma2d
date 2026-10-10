@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager2 : MonoBehaviour
 {   
     [SerializeField] private Text coinsText, livesText;
     [SerializeField] private GameObject panelGameOver, panelWin, panelpause;
@@ -76,3 +76,4 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = 0;
     }
 }
+
