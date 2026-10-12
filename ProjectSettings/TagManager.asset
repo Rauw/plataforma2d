@@ -14,6 +14,7 @@ TagManager:
   - limiteenemigo
   - enemy
   - win
+  - Thwomp
   layers:
   - Default
   - TransparentFX
