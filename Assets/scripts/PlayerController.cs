@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
         }
 
-        if (collision.gameObject.tag == "enemy")
+        if (collision.gameObject.tag == "enemy" || collision.gameObject.tag == "volador")
         {
            if (collision.GetContact(0).normal.y > 0.5f)
             {

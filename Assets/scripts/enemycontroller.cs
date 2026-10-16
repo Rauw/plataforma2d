@@ -23,7 +23,9 @@ public class enemycontroller : MonoBehaviour
             {
                                                                                        
             }
+            
         }
+        
 
         
     }
