@@ -62,6 +62,7 @@ public class LevelManager : MonoBehaviour
     public void ActivePanelGameOver()
     {
         panelGameOver.SetActive(true);
+        Time.timeScale = 0;
     }
 
     public void finishlevel()
